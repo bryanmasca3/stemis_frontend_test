@@ -4,27 +4,34 @@ import api from "./../config";
 const AddTask = ({ setres, category }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [cat, setCat] = useState("");
+  const [cat, setCat] = useState("-1");
   const [state, setState] = useState("");
+  const [error, setError] = useState(false);
   const handleSubmit = async () => {
-    try {
-      const data = {
-        title,
-        description,
-        category: cat,
-        state,
-      };     
-      const response = await api.post("/api/task", data);
-      console.log(response.data);
-      setres(response.data);
-      if (response.data) {
-        setTitle("");
-        setDescription("");
-        setCat("-1");
-        setState("");
+    console.log(cat)
+    if (title == "" || description == "" || cat == "-1" || state == "") {
+      setError(true);
+    } else {
+      try {
+        setError(false);
+        const data = {
+          title,
+          description,
+          category: cat,
+          state,
+        };
+        const response = await api.post("/api/task", data);
+        console.log(response.data);
+        setres(response.data);
+        if (response.data) {
+          setTitle("");
+          setDescription("");
+          setCat("-1");
+          setState("");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
   return (
@@ -87,6 +94,11 @@ const AddTask = ({ setres, category }) => {
               placeholder="Estado"
             />
           </div>
+          {error && (
+            <div class="mb-3 border border-danger text-danger">
+              Completa los datos.
+            </div>
+          )}
         </div>
       </div>
       <div class="row">

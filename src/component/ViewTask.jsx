@@ -3,7 +3,7 @@ import EditTask from "./EditTask";
 import { Button } from "react-bootstrap";
 import DeleteTask from "./DeleteTask";
 import api from "./../config";
-const ViewTask = ({ data, setres }) => {
+const ViewTask = ({ data, setres, categories }) => {
   const [isShowEdit, setisShowEdit] = useState(false);
   const [isShowDelete, setisShowDelete] = useState(false);
   const [id, setId] = useState(null);
@@ -95,6 +95,7 @@ const ViewTask = ({ data, setres }) => {
                   description={description}
                   setDescription={setDescription}
                   category={category}
+                  categories={categories}
                   setCategory={setCategory}
                   state={state}
                   setState={setState}

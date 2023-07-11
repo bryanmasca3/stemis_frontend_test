@@ -17,7 +17,7 @@ const DeleteTask = ({ setres, id, isShow, handleClose }) => {
       <Modal.Header>
         <Modal.Title>Eliminar Tarea</Modal.Title>
       </Modal.Header>
-      <Modal.Body>Deseas eliminar esta Tarea</Modal.Body>
+      <Modal.Body>¿Deseas eliminar esta Tarea?</Modal.Body>
       <Modal.Footer>
         <Button variant="dark" onClick={handleClose}>
           cancelar

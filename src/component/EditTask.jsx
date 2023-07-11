@@ -14,6 +14,7 @@ const EditTask = ({
   setres,
   id,
   isShow,
+  categories,
   handleClose,
 }) => {
   const handleSubmit = async () => {
@@ -63,14 +64,29 @@ const EditTask = ({
           </div>
           <div class="col col-lg-12">
             <div class="mb-3">
-              <input
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option key={"-1"} value={"-1"}>
+                  {"Selecciona una categoria ..."}
+                </option>
+                {categories.map((el) => (
+                  <option key={el.id} value={el.id}>
+                    {el.title}
+                  </option>
+                ))}
+              </select>
+              {/*  <input
                 type="text"
                 class="form-control"
                 id="exampleFormControlInput1"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 placeholder="Categoria"
-              />
+              /> */}
             </div>
           </div>
           <div class="col col-lg-12">

@@ -16,7 +16,7 @@ const DeleteCategory = ({ setres, id, isShow, handleClose }) => {
       <Modal.Header>
         <Modal.Title>Eliminar Categoria</Modal.Title>
       </Modal.Header>
-      <Modal.Body>Deseas eliminar esta categoria</Modal.Body>
+      <Modal.Body>¿Deseas eliminar esta categoria?. Si eliminas una categoria podria tener implicancias en las Tareas creadas.</Modal.Body>
       <Modal.Footer>
         <Button variant="dark" onClick={handleClose}>
           cancelar

@@ -2,17 +2,22 @@ import React, { useState } from "react";
 import api from "./../config";
 const AddCategory = ({ setres }) => {
   const [title, setTitle] = useState("");
-
+  const [error, setError] = useState(false);
   const handleSubmit = async () => {
-    try {
-      const response = await api.post("/api/category", { title });
-      console.log(response.data);
-      setres(response.data);
-      if (response.data) {
-        setTitle("");
+    if (title == "") {
+      setError(true);
+    } else {
+      try {
+        setError(false);
+        const response = await api.post("/api/category", { title });
+
+        setres(response.data);
+        if (response.data) {
+          setTitle("");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
   return (
@@ -33,6 +38,11 @@ const AddCategory = ({ setres }) => {
             />
           </div>
         </div>
+        {error && (
+          <div class="mb-3 border border-danger text-danger">
+            Completa los datos.
+          </div>
+        )}
       </div>
       <div class="row">
         <div class="col  offset-lg-6 col-lg-6 d-flex justify-content-end">

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import AddTask from "../component/AddTask";
 import ViewTask from "../component/ViewTask";
 import api from "./../config";
@@ -7,7 +7,6 @@ const Task = () => {
   const [category, setCategory] = useState([]);
   const [res, setres] = useState("");
   useEffect(() => {
-   
     const getCategory = async () => {
       try {
         const response = await api.get("/api/category");
@@ -37,7 +36,7 @@ const Task = () => {
             <AddTask setres={setres} category={category}></AddTask>
           </div>
           <div class="offset-lg-1 col col-lg-7">
-            <ViewTask data={data} setres={setres} />
+            <ViewTask data={data} setres={setres} categories={category} />
           </div>
         </div>
       </div>
